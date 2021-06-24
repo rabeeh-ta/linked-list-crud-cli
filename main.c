@@ -120,3 +120,15 @@ void insert_a_node()
     }
     free(n);
 }
+void free_memory()
+{
+    node *cursor = head;
+    node *temp = head;
+
+    while (cursor != NULL)
+    {
+        cursor = cursor->next;
+        free(temp);
+        temp = cursor;
+    }
+}
