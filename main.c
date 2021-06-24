@@ -132,3 +132,12 @@ void free_memory()
         temp = cursor;
     }
 }
+
+void print_linked_list()
+{
+    printf("--------- the list ------\n");
+    for (node *i = head; i != NULL; i = i->next)
+    {
+        printf("%i \n", i->data);
+    }
+}
