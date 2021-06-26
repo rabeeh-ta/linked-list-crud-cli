@@ -119,7 +119,7 @@ void insert_a_node()
         {
             // get the ending node
             node *lastNode = head;
-            while (lastNode != NULL)
+            while (lastNode->next != NULL)
             {
                 lastNode = lastNode->next;
             }
