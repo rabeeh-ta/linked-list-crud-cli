@@ -11,10 +11,11 @@ typedef struct node
 node *head; // this is the head of the linked list.
 
 // function prototypes
-void main_menu();
-void insert_a_node();
-void free_memory();
-void print_linked_list();
+void main_menu();     // print the main UI
+void insert_a_node(); // all the INSERTING  FEATURES
+void free_memory();   // free() the malloced() memory
+void print_list();    // display the linkedlist
+int size_of_list();   // return the number of nodes in the linked list
 
 int main()
 {
@@ -36,7 +37,8 @@ int main()
             printf("do the Deleting part\n");
             break;
         case 3:
-            print_linked_list();
+            printf("size of list : %i \n", size_of_list());
+            print_list();
             break;
         case 4:
             free_memory();
@@ -141,11 +143,23 @@ void free_memory()
     }
 }
 
-void print_linked_list()
+void print_list()
 {
     printf("--------- the list ------\n");
     for (node *i = head; i != NULL; i = i->next)
     {
         printf("%i \n", i->data);
     }
+}
+
+int size_of_list()
+{
+    int count = 0;
+    node *counterNode = head;
+    while (counterNode != NULL)
+    {
+        counterNode = counterNode->next;
+        count++;
+    }
+    return count;
 }
