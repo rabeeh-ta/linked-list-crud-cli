@@ -2,14 +2,13 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-// linked-list node.
 typedef struct node
 {
     int data;
     struct node *next;
 } node;
 
-node *head = NULL; // this is the head of the linked list.
+node *head; // this is the head of the linked list.
 
 // function prototypes
 void main_menu();
@@ -88,37 +87,46 @@ void insert_a_node()
 
     } while (choice > 5 || choice == 0); // 0 and anything above 4 is invalid
 
-    // make a node and get the value for the in to the node
-    node *n;
-    n = malloc(sizeof(node));
-
     // get the value to store in linked list
     int data; // user input to store in linked list
     printf("Enter the data to store in linked list (datatype int) ");
     scanf("%d", &data);
 
-    // put the data to the node
+    // make the node to add
+    node *n;
+    n = malloc(sizeof(node));
     n->data = data;
     n->next = NULL;
 
-    // now insert this to the linked list
-    if (choice == 1) // insert to the begging of the list
+    // Insert data to the linked list
+    if (head == NULL) // if the list has only one item
     {
-        node *temp = head; // store the starting part
-        head = n;          // head is the new node
-        n->next = temp;    // then the list starts after the new node
+        head = n;
     }
-    else if (choice == 2) // insert to the begging of the list
+    else // list has atleast one item
     {
-        node *i = head;
-        for (i != NULL; i = i->next;)
+
+        if (choice == 1) // insert to the begging of the list
         {
-            continue;
+            node *temp;
+            temp = head;
+            head = n;
+            head->next = temp;
         }
-        // now i is the last node
-        i->next = n;
+        else if (choice == 2) // insert to the Ending of the list
+        {
+            // get the ending node
+            node *lastNode = head;
+            while (lastNode != NULL)
+            {
+                lastNode = lastNode->next;
+            }
+            lastNode->next = n;
+        }
+        else if (choice == 3)
+        {
+        }
     }
-    free(n);
 }
 void free_memory()
 {
