@@ -34,10 +34,9 @@ int main()
             insert_a_node();
             break;
         case 2:
-            printf("do the Deleting part\n");
+            printf("Deleting Part is under construction\n");
             break;
         case 3:
-            printf("size of list : %i \n", size_of_list());
             print_list();
             break;
         case 4:
@@ -51,19 +50,6 @@ int main()
         }
 
     } while (!quit);
-}
-
-// this is the starting menu interface
-void main_menu()
-{
-    printf("-----Main Menu-----\n");
-    printf("\n");
-    printf("1 -> Insert\n");
-    printf("2 -> Delete\n");
-    printf("3 -> View Linked List\n");
-    printf("4 -> Quit\n");
-    printf("\n");
-    printf("Enter the Number from the menu ");
 }
 
 // inserting a node to the linked list. Insert to beginning, Ending or to any specific index.
@@ -91,7 +77,7 @@ void insert_a_node()
 
     // get the value to store in linked list
     int data; // user input to store in linked list
-    printf("Enter the data to store in linked list (datatype int) ");
+    printf("\nEnter the data to store in linked list (datatype int) ");
     scanf("%d", &data);
 
     // make the node to add
@@ -130,22 +116,23 @@ void insert_a_node()
         }
     }
 }
-void free_memory()
-{
-    node *cursor = head;
-    node *temp = head;
 
-    while (cursor != NULL)
-    {
-        cursor = cursor->next;
-        free(temp);
-        temp = cursor;
-    }
+// this is the starting menu interface
+void main_menu()
+{
+    printf("\n---------Main Menu---------\n");
+    printf("\n");
+    printf("1 -> Insert\n");
+    printf("2 -> Delete\n");
+    printf("3 -> View Linked List\n");
+    printf("4 -> Quit\n");
+    printf("\n");
+    printf("Enter the Number from the menu ");
 }
 
 void print_list()
 {
-    printf("--------- the list ------\n");
+    printf("\n\n----- linked-list(size %i) -----\n", size_of_list());
     for (node *i = head; i != NULL; i = i->next)
     {
         printf("%i \n", i->data);
@@ -162,4 +149,17 @@ int size_of_list()
         count++;
     }
     return count;
+}
+
+void free_memory()
+{
+    node *cursor = head;
+    node *temp = head;
+
+    while (cursor != NULL)
+    {
+        cursor = cursor->next;
+        free(temp);
+        temp = cursor;
+    }
 }
