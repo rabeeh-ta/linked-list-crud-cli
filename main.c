@@ -113,6 +113,29 @@ void insert_a_node()
         }
         else if (choice == 3) // insert to the index given
         {
+            int index;
+            printf("\nAt what index from 1 to %i would you like to add this node ", size_of_list());
+            scanf("%i", &index);
+
+            // the inserting to the index position part
+            node *currentNode = head;
+            node *previousNode = head;
+            for (int i = 1; currentNode != NULL; i++)
+            {
+                if (i == index) // insert n node at this place
+                {
+                    for (int j = 2; j < index; j++) // the previous node of index.
+                    {
+
+                        previousNode = previousNode->next;
+                    }
+
+                    n->next = currentNode;
+                    previousNode->next = n;
+                    break; // job done get out of the loop
+                }
+                currentNode = currentNode->next;
+            }
         }
     }
 }
@@ -121,7 +144,6 @@ void insert_a_node()
 void main_menu()
 {
     printf("\n---------Main Menu---------\n");
-    printf("\n");
     printf("1 -> Insert\n");
     printf("2 -> Delete\n");
     printf("3 -> View Linked List\n");
