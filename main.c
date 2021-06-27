@@ -34,7 +34,7 @@ int main()
             insert_a_node();
             break;
         case 2:
-            printf("Deleting Part is under construction\n");
+            printf("\n!!Deleting Part is under construction!!\n");
             break;
         case 3:
             print_list();
@@ -111,7 +111,7 @@ void insert_a_node()
             }
             lastNode->next = n;
         }
-        else if (choice == 3)
+        else if (choice == 3) // insert to the index given
         {
         }
     }
@@ -132,7 +132,7 @@ void main_menu()
 
 void print_list()
 {
-    printf("\n\n----- linked-list(size %i) -----\n", size_of_list());
+    printf("\n\n---- linked-list <size %i> ----\n", size_of_list());
     for (node *i = head; i != NULL; i = i->next)
     {
         printf("%i \n", i->data);
