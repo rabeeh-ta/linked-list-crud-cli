@@ -94,6 +94,8 @@ void insert_a_node()
     else // list has atleast one item
     {
 
+        // all the features start here
+
         if (choice == 1) // insert to the begging of the list
         {
             node *temp;
@@ -118,23 +120,34 @@ void insert_a_node()
             scanf("%i", &index);
 
             // the inserting to the index position part
-            node *currentNode = head;
-            node *previousNode = head;
-            for (int i = 1; currentNode != NULL; i++)
+
+            if (index == 1) // add to the first index
             {
-                if (i == index) // insert n node at this place
+                node *temp;
+                temp = head;
+                head = n;
+                head->next = temp;
+            }
+            else // any other index
+            {
+                node *currentNode = head;
+                node *previousNode = head;
+                for (int i = 1; currentNode != NULL; i++)
                 {
-                    for (int j = 2; j < index; j++) // the previous node of index.
+                    if (i == index) // insert n node at this place
                     {
+                        for (int j = 2; j < index; j++) // the previous node of index.
+                        {
 
-                        previousNode = previousNode->next;
+                            previousNode = previousNode->next;
+                        }
+
+                        n->next = currentNode;
+                        previousNode->next = n;
+                        break; // job done get out of the loop
                     }
-
-                    n->next = currentNode;
-                    previousNode->next = n;
-                    break; // job done get out of the loop
+                    currentNode = currentNode->next;
                 }
-                currentNode = currentNode->next;
             }
         }
     }
