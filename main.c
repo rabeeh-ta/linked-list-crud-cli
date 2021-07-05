@@ -78,7 +78,40 @@ void delete_a_node()
 
     } while (choice > 5 || choice == 0); // 0 and anything above 4 is invalid
 
-    printf("\nChoice selected ===> %i", choice);
+    printf("\nChoice selected ===> %i\n\n", choice);
+
+    //! first check if there is something in the linked list
+    if (size_of_list() == 0)
+    {
+        printf("\n\nLinked list is Empty\n\n");
+        return;
+    }
+    else // there is more than one node you can delete endnode startnode or indexnode.
+    {
+        if (choice == 1) // delete one in deggening
+        {
+            //! what if there is only one node in list
+            if (size_of_list() == 1) // End and Beggining is one node
+            {
+                head = NULL;
+                free(head);
+                return;
+            }
+
+            node *firstNode = head;
+            head = firstNode->next; // head is set to what is next of first node
+            free(firstNode);
+        }
+        else if (choice == 2)
+        {
+            printf("\nDelete at the end");
+            // delete last node
+        }
+        else if (choice == 3)
+        {
+            printf("\nDelete by the index value");
+        }
+    }
 }
 
 //? inserting a node to the linked list. Insert to beginning, Ending or to any specific index.
