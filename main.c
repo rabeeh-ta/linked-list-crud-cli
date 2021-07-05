@@ -104,8 +104,25 @@ void delete_a_node()
         }
         else if (choice == 2)
         {
-            printf("\nDelete at the end");
-            // delete last node
+
+            //! what if there is only one node in list
+            if (size_of_list() == 1) // End and Beggining is one node
+            {
+                head = NULL;
+                free(head);
+                return;
+            }
+
+            node *lastNodesPrevious = head;
+            while (lastNodesPrevious->next->next != NULL)
+            {
+
+                lastNodesPrevious = lastNodesPrevious->next;
+            }
+
+            node *lastNode = lastNodesPrevious->next;
+            lastNodesPrevious->next = NULL; // delete reference of last node from the list
+            free(lastNode);                 // delete last node
         }
         else if (choice == 3)
         {
