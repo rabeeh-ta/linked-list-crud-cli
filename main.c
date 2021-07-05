@@ -13,6 +13,7 @@ node *head; // this is the head of the linked list.
 // function prototypes
 void main_menu();     // print the main UI
 void insert_a_node(); // all the INSERTING  FEATURES
+void delete_a_node(); // all the INSERTING  FEATURES
 void free_memory();   // free() the malloced() memory
 void print_list();    // display the linkedlist
 int size_of_list();   // return the number of nodes in the linked list
@@ -34,7 +35,7 @@ int main()
             insert_a_node();
             break;
         case 2:
-            printf("\n!!Deleting Part is under construction!!\n");
+            delete_a_node();
             break;
         case 3:
             print_list();
@@ -52,7 +53,36 @@ int main()
     } while (!quit);
 }
 
-// inserting a node to the linked list. Insert to beginning, Ending or to any specific index.
+//? this function will do everything with deleting option
+// delete one, delete end, delete by index value
+
+void delete_a_node()
+{
+    int choice = 0;
+    do
+    {
+
+        printf("\n-----Inserting Menu-----\n");
+        printf("1 -> Delete One at Beginning\n");
+        printf("2 -> Delete One at Ending\n");
+        printf("3 -> Delete One by Index Value\n");
+        printf("4 -> Return to Main Menu\n");
+        printf("\n");
+        printf("Enter the Number from the menu ");
+        scanf("%d", &choice);
+
+        if (choice == 4)
+        {
+            return;
+        }
+
+    } while (choice > 5 || choice == 0); // 0 and anything above 4 is invalid
+
+    printf("\nChoice selected ===> %i", choice);
+}
+
+//? inserting a node to the linked list. Insert to beginning, Ending or to any specific index.
+
 void insert_a_node()
 {
     int choice = 0;
@@ -152,6 +182,8 @@ void insert_a_node()
         }
     }
 }
+
+//!-------------- helper functions----------------//
 
 // this is the starting menu interface
 void main_menu()
