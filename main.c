@@ -126,7 +126,20 @@ void delete_a_node()
         }
         else if (choice == 3)
         {
-            printf("\nDelete by the index value");
+            int index;
+            printf("\nAt what index from 1 to %i would you like to add this node ", size_of_list());
+            scanf("%i", &index);
+
+            //? if check if first one
+            if (index == 1)
+            {
+                node *firstNode = head;
+                head = firstNode->next; // head is set to what is next of first node
+                free(firstNode);
+            }
+            else // any other node
+            {
+                        }
         }
     }
 }
