@@ -63,9 +63,9 @@ void delete_a_node()
     {
 
         printf("\n-----Inserting Menu-----\n");
-        printf("1 -> Delete One at Beginning\n");
-        printf("2 -> Delete One at Ending\n");
-        printf("3 -> Delete One by Index Value\n");
+        printf("1 -> Delete One in Beginning\n");
+        printf("2 -> Delete One in Ending\n");
+        printf("3 -> Delete by Index Value\n");
         printf("4 -> Return to Main Menu\n");
         printf("\n");
         printf("Enter the Number from the menu ");
@@ -77,8 +77,6 @@ void delete_a_node()
         }
 
     } while (choice > 5 || choice == 0); // 0 and anything above 4 is invalid
-
-    printf("\nChoice selected ===> %i\n\n", choice);
 
     //! first check if there is something in the linked list
     if (size_of_list() == 0)
@@ -137,9 +135,20 @@ void delete_a_node()
                 head = firstNode->next; // head is set to what is next of first node
                 free(firstNode);
             }
-            else // any other node
+            else if (index >= 2 && size_of_list() >= index) // any other node
             {
-                        }
+                node *nodeBDN = head; // nodeBeforeDeleteNode
+                node *deleteNode;
+                int i = 1;
+                while (i != index - 1)
+                {
+                    nodeBDN = nodeBDN->next;
+                    i++;
+                }
+                deleteNode = nodeBDN->next;
+                nodeBDN->next = deleteNode->next;
+                free(deleteNode);
+            }
         }
     }
 }
