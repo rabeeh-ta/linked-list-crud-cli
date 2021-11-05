@@ -8,15 +8,16 @@ typedef struct node
     struct node *next;
 } node;
 
-node *head; // this is the head of the linked list.
+node *head; // has the address of the first node of the linked list
 
 // function prototypes
-void main_menu();     // print the main UI
-void insert_a_node(); // all the INSERTING  FEATURES
-void delete_a_node(); // all the INSERTING  FEATURES
-void free_memory();   // free() the malloced() memory
-void print_list();    // display the linkedlist
-int size_of_list();   // return the number of nodes in the linked list
+void main_menu();           // print the main UI
+void insert_a_node();       // all the INSERTING  FEATURES
+void delete_a_node();       // all the INSERTING  FEATURES
+void free_memory();         // free() the malloced() memory
+void print_list();          // display the linkedlist
+int size_of_list();         // return the number of nodes in the linked list
+void reverse_linked_list(); // reverse the given linked list;
 
 int main()
 {
@@ -41,6 +42,9 @@ int main()
             print_list();
             break;
         case 4:
+            reverse_linked_list();
+            break;
+        case 5:
             free_memory();
             quit = true; // exit out of the while loop and also the entire program.
             break;
@@ -189,7 +193,7 @@ void insert_a_node()
     n->next = NULL;
 
     // Insert data to the linked list
-    if (head == NULL) // if the list has only one item
+    if (head == NULL) // if the list is empty
     {
         head = n;
     }
@@ -264,7 +268,8 @@ void main_menu()
     printf("1 -> Insert\n");
     printf("2 -> Delete\n");
     printf("3 -> View Linked List\n");
-    printf("4 -> Quit\n");
+    printf("4 -> Reverse the Linked List\n");
+    printf("5 -> Quit\n");
     printf("\n");
     printf("Enter the Number from the menu ");
 }
@@ -301,4 +306,24 @@ void free_memory()
         free(temp);
         temp = cursor;
     }
+}
+
+void reverse_linked_list()
+{
+    node *prev, *next, *cursor;
+    cursor = head;
+    next = head;
+    prev = NULL;
+
+    while (cursor->next != NULL)
+    {
+        // printf("%i ", cursor->data);
+        // cursor = cursor->next;
+        next = cursor->next;
+        cursor->next = prev;
+        prev = cursor;
+        cursor = next;
+        printf("looped count\n");
+    }
+    head = cursor;
 }
