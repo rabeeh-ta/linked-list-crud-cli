@@ -325,5 +325,6 @@ void reverse_linked_list()
         cursor = next;
         printf("looped count\n");
     }
+    cursor->next = prev;
     head = cursor;
 }
